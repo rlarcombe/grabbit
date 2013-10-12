@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Grabbit::VERSION
   spec.authors       = ["Richard Larcombe"]
   spec.email         = ["rjlarcombe@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Grabbit: the Facebook-style tool for scraping the title, description and best thumbnail image(s) from a given URL.}
+  spec.summary       = %q{When you share a URL on Facebook in a post, you will have noticed how FB goes off in the background and pulls the title, description, and best thumbnail images to represent the content on the page. This gem is a simple scraper to do the same.}
+  spec.homepage      = "https://github.com/rlarcombe/grabbit"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

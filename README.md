@@ -1,6 +1,6 @@
 # Grabbit
 
-TODO: Write a gem description
+When you share a URL on Facebook in a post, you will have noticed how FB goes off in the background and pulls the title, description, and best thumbnail image(s) to represent the content on the page. This gem is a simple scraper to do the same.
 
 ## Installation
 
