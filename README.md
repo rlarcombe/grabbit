@@ -71,7 +71,7 @@ Failure:
 
 #### Example: Usage with a Rails 3.2 app
 
-In a Rails app, I recommend creating a **model** to store page scrapes in a database. Then you have a persistent store/cache of remote page scrapes so you don't have to keep pulling the remote data. 
+In a Rails app, I recommend creating a **model** to store page scrapes in a database. Then you have a persistent store/cache of remote page scrapes, if the same url is entered more that once you can instantly return the correct results. 
 
 Here is an example of a **Scrape** model:
 ```ruby
@@ -103,6 +103,19 @@ class Scrape < ActiveRecord::Base
 
 	end
 end
+
+# == Schema Information
+#
+# Table name: scrapes
+#
+#  id          :integer          not null, primary key
+#  url         :string(255)
+#  title       :string(255)
+#  description :text
+#  images      :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 ```
 
 Now set up a controller with just one action you can post to, then either find by the url stored in the database, or create a new scrape and perform the grabbit. E.g. call this controller with a jQuery.post() to create the scrape dynamically with javascript.
