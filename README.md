@@ -74,60 +74,61 @@ Failure:
 In a Rails app, I recommend creating a **model** to store page scrapes in a database. Then you have a persistent store/cache of scrapes. 
 
 Here is an example of a **Scrape** model:
+```ruby
+# scrape.rb
+#
+# Generate migration and model with: rails generate Scrape title:string description:text images:text url:string
 
-		# scrape.rb
-		#
-		# Generate migration and model with: rails generate Scrape title:string description:text images:text url:string
+class Scrape < ActiveRecord::Base
+	
+	attr_accessible :url
 
-		class Scrape < ActiveRecord::Base
+	serialize :images 	# Store images array as YAML in the database
+
+	validates :url, presence: true, :format => URI::regexp(%w(http https))
+
+	before_save :scrape_with_grabbit
+
+	private
+
+		def scrape_with_grabbit
+  
+  		data = Grabbit.url(url)
   		
-  		attr_accessible :url
+  		if data
+    		self.title = data.title
+    		self.description = data.description
+    		self.images = data.images
+  		end
 
-  		serialize :images 	# Store images array as YAML in the database
-
-  		validates :url, presence: true, :format => URI::regexp(%w(http https))
-
-  		before_save :scrape_with_grabbit
-
-  		private
-
-	  		def scrape_with_grabbit
-	    
-	    		data = Grabbit.url(url)
-	    		
-	    		if data
-	      		self.title = data.title
-	      		self.description = data.description
-	      		self.images = data.images
-	    		end
-
-	  		end
 		end
+end
+```
 
 Now set up a controller with just one action you can post to, then either find by the url stored in the database, or create a new scrape and perform the grabbit:
 
 ```ruby
-		# scrapes_controller.rb
-		#
+# scrapes_controller.rb
+#
 
-		class ScrapesController < ApplicationController
+class ScrapesController < ApplicationController
 
-		  def create
+  def create
 
-		    @scrape = Scrape.find_or_create_by_url(params[:scrape][:url])
+    @scrape = Scrape.find_or_create_by_url(params[:scrape][:url])
 
-		    respond_to do |format|
-		      if @scrape.valid?
-		        format.html { redirect_to @scrape, notice: 'Scrape saved.' }
-		        format.js # Use javascript to load the preview over ajax etc.
-		      else
-		        format.html { render action: "new" }
-		        format.js { render "error" }
-		      end
-		    end
-		  end
+    respond_to do |format|
+      if @scrape.valid?
+        format.html { redirect_to @scrape, notice: 'Scrape saved.' }
+        format.js # Use javascript to load the preview over ajax etc.
+      else
+        format.html { render "new" }
+        format.js { render "error" }
+      end
+    end
+  end
 
-		end
+end
 ```
 
 ## How it works
