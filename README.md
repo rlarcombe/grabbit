@@ -17,6 +17,21 @@ Or install it yourself as:
 
     $ gem install grabbit
 
+
+## How it works
+
+Grabbit uses HTTParty to grab the remote page, and then uses Nokogiri to parse the document to return the data. 
+
+### Finding the Title
+
+Grabbit works on the following precedence to find the Title of the page:
+
+> 1. Look for Facebook og:title meta-tag first. See http://ogp.me/
+> 2. Look for a Twitter Card twitter:title meta-tag. See https://dev.twitter.com/docs/cards
+> 3. Use the contents of the <title> tags.
+
+		
+
 ## Usage
 
 		scrape = Grabbit.url("https://github.com")
