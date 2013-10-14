@@ -140,6 +140,8 @@ class ScrapesController < ApplicationController
 
 end
 ```
+You may want to use [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) to save the best image to your own server by using CarrierWave's remote url option.
+
 
 ## How it works
 
