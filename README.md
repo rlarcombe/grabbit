@@ -63,7 +63,7 @@ Failure:
 		scrape
 			=> nil	
 
-		scrape = Grabbit.url("http://www.this-is-a-valid-url-but-page-exists.com")
+		scrape = Grabbit.url("http://www.this-is-a-valid-url-but-page-does-not-exist.com")
 		
 		scrape
 			=> nil		
