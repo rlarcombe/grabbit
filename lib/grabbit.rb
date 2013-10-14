@@ -1,6 +1,5 @@
 require "grabbit/version"
 require "grabbit/scrape"
-require "grabbit/configuration"
 
 module Grabbit
   extend self
