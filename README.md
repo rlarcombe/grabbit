@@ -1,8 +1,8 @@
 # Grabbit
 
-Grabbit is a simple URL scraper. 
-It returns the best image(s) to represent the content on a given web page. 
-Grabbit also returns a Title, and a Description for the page.
+**Grabbit** is a simple URL scraper. 
+It returns the best *image* (or several images) that represents the content on a given web page. 
+Grabbit also returns a *title*, and a *description* for the page.
 
 This Gem was inspired by Facebook: When you share a URL on Facebook in a post, FB goes off in the background and pulls the title, description, and best thumbnail image(s) to accompany your post. 
 
@@ -71,7 +71,7 @@ Failure:
 
 #### Example: Usage with a Rails 3.2 app
 
-In a Rails app, I recommend creating a **model** to store page scrapes in a database. Then you have a persistent store/cache of scrapes. 
+In a Rails app, I recommend creating a **model** to store page scrapes in a database. Then you have a persistent store/cache of remote page scrapes so you don't have to keep pulling the remote data. 
 
 Here is an example of a **Scrape** model:
 ```ruby
@@ -91,21 +91,21 @@ class Scrape < ActiveRecord::Base
 
 	private
 
-		def scrape_with_grabbit
-  
-  		data = Grabbit.url(url)
-  		
-  		if data
-    		self.title = data.title
-    		self.description = data.description
-    		self.images = data.images
-  		end
+	def scrape_with_grabbit
 
+		data = Grabbit.url(url)
+		
+		if data
+			self.title = data.title
+			self.description = data.description
+			self.images = data.images
 		end
+
+	end
 end
 ```
 
-Now set up a controller with just one action you can post to, then either find by the url stored in the database, or create a new scrape and perform the grabbit:
+Now set up a controller with just one action you can post to, then either find by the url stored in the database, or create a new scrape and perform the grabbit. E.g. call this controller with a jQuery.post() to create the scrape dynamically with javascript.
 
 ```ruby
 # scrapes_controller.rb
