@@ -90,6 +90,17 @@ Grabbit works on the following precedence to find the Description of the page:
 > 3. Use the contents of the &lt;meta name='description'&gt; tags.
 > 4. Otherwise, return a blank string.
 
+#### Finding the Image(s) for the web page
+
+Grabbit works on the following precedence to return an array of Image URLs:
+
+> 1. Look for Facebook og:image meta-tag first. See http://ogp.me/
+> 2. Look for a Twitter Card twitter:image:src meta-tag. See https://dev.twitter.com/docs/cards
+> 3. Look for image with id of main-image or prodImage (Amazon).
+> 3. Look for images within divs with id="content" excluding sidebar, comment, footer and header sections.
+> 4. Look for images within the whole page excluding sidebar, comment, footer and header sections.
+> 3. Find every image in the given page.
+
 		
 
 
