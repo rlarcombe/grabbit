@@ -106,6 +106,7 @@ Here is an example of a **Scrape** model:
 
 Now set up a controller with just one action you can post to, then either find by the url stored in the database, or create a new scrape and perform the grabbit:
 
+```ruby
 		# scrapes_controller.rb
 		#
 
@@ -127,6 +128,7 @@ Now set up a controller with just one action you can post to, then either find b
 		  end
 
 		end
+```
 
 ## How it works
 
