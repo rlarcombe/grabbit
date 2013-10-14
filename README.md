@@ -18,16 +18,31 @@ Or install it yourself as:
     $ gem install grabbit
 
 ## Usage
-
+		
+		# Call Grabbit, with a remote URL to scrape:
+		
 		scrape = Grabbit.url("https://www.google.com/")
 
-		scrape.title = "Google"
-
-		scrape.description = "Search the world's information, including webpages, 	images, videos and more. Google has many special features to help you find exactly what you're looking for.
-
-		scrape.images = ["http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"]
+		# Title of the remote web page:
 		
-		scrape.images.first = "http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"
+		scrape.title 
+		 => "Google"
+
+		# Description of the remote web page:
+		
+		scrape.description 
+		 => "Search the world's information, including webpages, 	images, videos and
+		 more. Google has many special features to help you find exactly what you're looking for."
+
+		# Array of full URLs of images in the remote web page (only returns best images to describe the content on the given page:
+		
+		scrape.images 
+		 => ["http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"]
+		
+		 # URL of first image in the array:
+
+		scrape.images.first 
+		 => "http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"
 
 ## How it works
 
