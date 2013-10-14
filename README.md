@@ -1,10 +1,12 @@
 # Grabbit
 
 Grabbit is a simple URL scraper. 
-It returns the best image(s) to represent the content on the page. 
-Grabbit also returns the a Title, and Description for the page.
+It returns the best image(s) to represent the content on a given web page. 
+Grabbit also returns a Title, and a Description for the page.
 
-This Gem was inspired by Facebook: When you share a URL on Facebook in a post, FB goes off in the background and pulls the title, description, and best thumbnail image(s) to accompany your post. This gem is a simple scraper to do the same.
+This Gem was inspired by Facebook: When you share a URL on Facebook in a post, FB goes off in the background and pulls the title, description, and best thumbnail image(s) to accompany your post. 
+
+This gem is a simple scraper to do the same. Have fun using it in your Rails App!
 
 ## Installation
 
@@ -24,28 +26,35 @@ Or install it yourself as:
 		
 		# Call Grabbit, with a remote URL to scrape:
 		
-		scrape = Grabbit.url("https://www.google.com/")
+		scrape = Grabbit.url("http://www.google.com/")
 
-		# Title of the remote web page:
+		# Display the page's Title:
 		
 		scrape.title 
 		 => "Google"
 
-		# Description of the remote web page:
+		# Display the page's Description:
 		
 		scrape.description 
-		 => "Search the world's information, including webpages, 	images, videos and
+		 => "Search the world's information, including webpages, images, videos and
 		 more. Google has many special features to help you find exactly what you're looking for."
 
-		# Array of full URLs of images in the remote web page (only returns best images to describe the content on the given page:
+		# Array of image URLs from the page:
 		
 		scrape.images 
 		 => ["http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"]
 		
-		 # URL of first image in the array:
+		# First image:
 
 		scrape.images.first 
 		 => "http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"
+
+		# All images:
+
+		scrape.images.each do |img|
+			puts img
+		end
+		 => "http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"		 
 
 ## How it works
 
