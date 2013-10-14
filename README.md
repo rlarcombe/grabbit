@@ -17,31 +17,43 @@ Or install it yourself as:
 
     $ gem install grabbit
 
+## Usage
+
+		scrape = Grabbit.url("https://www.google.com/")
+
+		scrape.title = "Google"
+
+		scrape.description = "Search the world's information, including webpages, 	images, videos and more. Google has many special features to help you find exactly what you're looking for.
+
+		scrape.images = ["http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"]
+		
+		scrape.images.first = "http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"
 
 ## How it works
 
 Grabbit uses HTTParty to grab the remote page, and then uses Nokogiri to parse the document to return the data. 
 
-### Finding the Title
+#### Finding the Title of a given web page
 
 Grabbit works on the following precedence to find the Title of the page:
 
 > 1. Look for Facebook og:title meta-tag first. See http://ogp.me/
 > 2. Look for a Twitter Card twitter:title meta-tag. See https://dev.twitter.com/docs/cards
 > 3. Use the contents of the <title> tags.
+> 4. Otherwise, return a blank string.
+
+#### Finding the Description of a web page
+
+Grabbit works on the following precedence to find the Description of the page:
+
+> 1. Look for Facebook og:description meta-tag first. See http://ogp.me/
+> 2. Look for a Twitter Card twitter:description meta-tag. See https://dev.twitter.com/docs/cards
+> 3. Use the contents of the <meta name='description'> tags.
+> 4. Otherwise, return a blank string.
 
 		
 
-## Usage
 
-		scrape = Grabbit.url("https://github.com")
-
-		if scrape
-			scrape.title = "GitHub · Build software better, together."
-			scrape.description = "Build software better, together."
-			scrape.images = ["https://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png"]
-			scrape.images.first = "https://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png"
-		end
 
 ## Contributing
 

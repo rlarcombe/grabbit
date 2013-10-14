@@ -80,6 +80,6 @@ describe Grabbit do
 	  	g = Grabbit.url("http://www.amazon.com/gp/product/0975277324")
 	  	g.images.first.should == "http://ecx.images-amazon.com/images/I/61dDQUfhuvL._SX300_.jpg"
 	  	g.images.length.should == 1
-	  end	  
+	  end	 
   end
 end
