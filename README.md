@@ -118,7 +118,7 @@ end
 #
 ```
 
-Now set up a controller with just one action you can post to, then either find by the url stored in the database, or create a new scrape and perform the grabbit. E.g. call this controller with a jQuery.post() to create the scrape dynamically with javascript.
+Now set up a controller with just one action you can post to, then either find by the url stored in the database, or create a new scrape and perform the grabbit. Consider calling this controller with a jQuery.post() to create the scrape dynamically with javascript right as your user enters the URL.
 
 ```ruby
 # scrapes_controller.rb
@@ -132,11 +132,9 @@ class ScrapesController < ApplicationController
 
     respond_to do |format|
       if @scrape.valid?
-        format.html { redirect_to @scrape, notice: 'Scrape saved.' }
-        format.js # Use javascript to load the preview over ajax etc.
+        format.js # /app/views/scrapes/create.js.erb --> Use JS to display the preview to the user.
       else
-        format.html { render "new" }
-        format.js { render "error" }
+        format.js { render "error" } # /app/views/scrapes/error.js.erb --> Bad URL, Cancel the AJAX loading image or whatever...
       end
     end
   end
