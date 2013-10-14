@@ -24,32 +24,33 @@ Or install it yourself as:
 
 ## Usage
 		
-		# Call Grabbit, with a remote URL to scrape:
+Call Grabbit, with a remote URL to scrape:
 		
 		scrape = Grabbit.url("http://www.google.com/")
 
-		# Display the page's Title:
+Display the page's Title:
 		
 		scrape.title 
 		 => "Google"
 
-		# Display the page's Description:
+Display the page's Description:
 		
 		scrape.description 
 		 => "Search the world's information, including webpages, images, videos and
 		 more. Google has many special features to help you find exactly what you're looking for."
 
-		# Array of image URLs from the page:
+Array of image URLs from the page:
+(In this example there is only one, but some pages may have several suitable images)
 		
 		scrape.images 
 		 => ["http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"]
 		
-		# First image:
+URL of the first image:
 
 		scrape.images.first 
 		 => "http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"
 
-		# All images:
+Loop through all images:
 
 		scrape.images.each do |img|
 			puts img
