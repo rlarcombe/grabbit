@@ -1,6 +1,9 @@
 # Grabbit
 
-Grabbit is a simple URL scraper, to return the best Thumbnail image(s) to represent the content on the page. Grabbit also returns the page Title, and Description.
+Grabbit is a simple URL scraper. 
+It returns the best image(s) to represent the content on the page. 
+Grabbit also returns the a Title, and Description for the page.
+
 This Gem was inspired by Facebook: When you share a URL on Facebook in a post, FB goes off in the background and pulls the title, description, and best thumbnail image(s) to accompany your post. This gem is a simple scraper to do the same.
 
 ## Installation
