@@ -40,6 +40,7 @@ Display the page's Description:
 		 more. Google has many special features to help you find exactly what you're looking for."
 
 Array of image URLs from the page:
+
 (In this example there is only one, but some pages may have several suitable images)
 		
 		scrape.images 
