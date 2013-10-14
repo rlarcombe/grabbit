@@ -76,8 +76,8 @@ In a Rails app, I recommend creating a **model** to store page scrapes in a data
 Here is an example of a **Scrape** model:
 ```ruby
 # scrape.rb
-# Generate migration and model with: rails generate Scrape url:string title:string description:text images:text
-
+# Generate migration and model with: r
+# rails generate Scrape url:string title:string description:text images:text
 class Scrape < ActiveRecord::Base
 	
 	attr_accessible :url
@@ -129,11 +129,11 @@ class ScrapesController < ApplicationController
 
     respond_to do |format|
       if @scrape.valid?
-        format.js 										# /app/views/scrapes/create.js.erb 
-        															# --> Use JS to display the preview to the user.
+        format.js 
+        # /app/views/scrapes/create.js.erb --> Use JS to display the preview to the user.
       else
-        format.js { render "error" } 	# /app/views/scrapes/error.js.erb 
-        															# --> Bad URL, Cancel the AJAX loading image or whatever...
+        format.js { render "error" } 	
+        # /app/views/scrapes/error.js.erb --> Bad URL, Cancel the AJAX loading image or whatever...
       end
     end
   end
