@@ -29,6 +29,8 @@ module Grabbit
 
 				# Finally return a blank string
 				""
+			else
+				nil
 			end
     end
 
@@ -49,10 +51,13 @@ module Grabbit
     		@doc.xpath("//meta[@name='description']/@content").each do |element|
   				return element.value.strip				
 				end
-			end
 			
-			# Finally return a blank string
-			""			
+			
+				# Finally return a blank string
+				""
+			else
+				nil
+			end			
     end    
 
     def images
@@ -109,9 +114,18 @@ module Grabbit
     private 
 
 			def get_remote_data
-    		response = HTTParty.get(@url)
+				begin
+    			response = HTTParty.get(@url)
+    		rescue
+    			return nil
+    		end
+
 	    	if response.code == 200
-	    		Nokogiri::HTML(response.body) 
+	    		begin
+	    			Nokogiri::HTML(response.body) 
+	    		rescue
+	    			return nil
+	    		end
 	    	else
 	    		nil
 	    	end 

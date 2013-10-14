@@ -39,9 +39,7 @@ Display the page's Description:
 		 => "Search the world's information, including webpages, images, videos and
 		 more. Google has many special features to help you find exactly what you're looking for."
 
-Array of image URLs from the page:
-
-(In this example there is only one, but some pages may have several suitable images)
+Array of image URLs from the page. (In this example there is only one, but some pages may have several suitable images):
 		
 		scrape.images 
 		 => ["http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"]
@@ -56,7 +54,19 @@ Loop through all images:
 		scrape.images.each do |img|
 			puts img
 		end
-		 => "http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"		 
+		 => "http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"		
+
+Failure:
+	
+		scrape = Grabbit.url("this is an invalid url")
+		
+		scrape
+			=> nil	
+
+		scrape = Grabbit.url("http://www.this-is-a-valid-url-but-page-exists.com")
+		
+		scrape
+			=> nil							  
 
 ## How it works
 
@@ -68,7 +78,7 @@ Grabbit works on the following precedence to find the Title of the page:
 
 > 1. Look for Facebook og:title meta-tag first. See http://ogp.me/
 > 2. Look for a Twitter Card twitter:title meta-tag. See https://dev.twitter.com/docs/cards
-> 3. Use the contents of the <title> tags.
+> 3. Use the contents of the &lt;title&gt; tags.
 > 4. Otherwise, return a blank string.
 
 #### Finding the Description of a web page
@@ -77,7 +87,7 @@ Grabbit works on the following precedence to find the Description of the page:
 
 > 1. Look for Facebook og:description meta-tag first. See http://ogp.me/
 > 2. Look for a Twitter Card twitter:description meta-tag. See https://dev.twitter.com/docs/cards
-> 3. Use the contents of the <meta name='description'> tags.
+> 3. Use the contents of the &lt;meta name='description'&gt; tags.
 > 4. Otherwise, return a blank string.
 
 		

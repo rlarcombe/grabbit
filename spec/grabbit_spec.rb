@@ -17,7 +17,14 @@ describe Grabbit do
 	  it "should not return nil for a good url", :vcr do
 	  	g = Grabbit.url("http://www.google.com")
 	  	g.should_not == nil
-	  end 
+	  end
+
+	  it "should not return nil for 404 error", :vcr do
+	  	g = Grabbit.url("http://www.thisurldoesnotexist.com/")
+	  	g.title.should == nil
+	  	g.description.should == nil	  	
+	  	g.images.should == []
+	  end
 
 	end
 
@@ -81,5 +88,6 @@ describe Grabbit do
 	  	g.images.first.should == "http://ecx.images-amazon.com/images/I/61dDQUfhuvL._SX300_.jpg"
 	  	g.images.length.should == 1
 	  end	 
+	 
   end
 end
