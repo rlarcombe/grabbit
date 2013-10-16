@@ -77,7 +77,7 @@ Here is an example of a **Scrape** model:
 ```ruby
 # scrape.rb
 # Generate migration and model with: r
-# rails generate Scrape url:string title:string description:text images:text
+# rails generate model Scrape url:string title:string description:text images:text
 class Scrape < ActiveRecord::Base
 	
 	attr_accessible :url
