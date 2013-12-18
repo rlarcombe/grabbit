@@ -176,10 +176,6 @@ Grabbit works on the following precedence to return an array of Image URLs:
 > 4. Look for images within the whole page excluding sidebar, comment, footer and header sections.
 > 3. Find every image in the given page.
 
-		
-
-
-
 ## Contributing
 
 1. Fork it
@@ -187,3 +183,8 @@ Grabbit works on the following precedence to return an array of Image URLs:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Docs
+
+The Grabbit gem documentation is available via the Omniref search engine here: http://www.omniref.com/ruby/gems/grabbit
+
