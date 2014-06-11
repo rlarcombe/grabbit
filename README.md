@@ -92,6 +92,10 @@ class Scrape < ActiveRecord::Base
 
 	def scrape_with_grabbit
 
+		# I highly recommend passing the following call off to a Resque worker, or Delayed Job queue.
+		# The reason is that Grabbit will attempt to access the remote URL. If there is a network problem,
+		# or the remote URL is unavailable, the following line could hang up your Rails process.
+		
 		data = Grabbit.url(url)
 		
 		if data
