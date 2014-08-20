@@ -1,5 +1,6 @@
 require 'httparty'
 require 'nokogiri'
+require 'addressable/uri'
 
 module Grabbit
   class Scrape
@@ -132,7 +133,7 @@ module Grabbit
       end
 
       def image_absolute_uri(image_path)
-        URI.join(@url, URI.encode(image_path)).to_s
+        Addressable::URI.join(@url, image_path).to_s
       end
   end
 end
